@@ -31,4 +31,4 @@ jobs:
       env:
         ACCESS_TOKEN: ${{ secrets.TPS_REPO_ACCESS_TOKEN }}
       if: github.ref == 'refs/heads/master' && job.status == 'success'
-      run: git push https://mr-tps:$ACCESS_TOKEN@github.com/mr-tps/cross-pipeline-testing.git public:public
+      run: git push -f https://mr-tps:$ACCESS_TOKEN@github.com/mr-tps/cross-pipeline-testing.git public:public
