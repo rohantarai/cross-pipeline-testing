@@ -17,6 +17,6 @@ jobs:
         SOURCE_REPO: "https://rohantarai:${{ secrets.RKT_TOKEN }}@github.com/rohantarai/cross-pipeline-testing.git"
         SOURCE_BRANCH: "master"
         DESTINATION_REPO: "https://mr-tps:${{ secrets.TPS_TOKEN }}@github.com/mr-tps/cross-pipeline-testing.git"
-        DESTINATION_BRANCH: "public"
+        DESTINATION_BRANCH: "master"
       with:
         args: $SOURCE_REPO $SOURCE_BRANCH $DESTINATION_REPO $DESTINATION_BRANCH
