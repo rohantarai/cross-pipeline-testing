@@ -6,10 +6,12 @@ on:
       - master
 
 jobs:
-  repo-sync:
+  mirror:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: repo-mirror
       - uses: netengine/github-repository-sync-action@v1
         with:
