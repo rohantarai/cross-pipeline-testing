@@ -1,4 +1,4 @@
-name: Repo-Sync CI
+name: Mirror CI
 
 on:
   pull_request:
@@ -9,12 +9,8 @@ jobs:
   repo-sync:
     runs-on: ubuntu-latest
     steps:
-    - name: repo-sync
-      uses: wei/git-sync@v1
-      env:
-        SOURCE_REPO: "rohantarai/cross-pipeline-testing"
-        SOURCE_BRANCH: "master"
-        DESTINATION_REPO: "mr-tps/cross-pipeline-testing"
-        DESTINATION_BRANCH: "public"
-      with:
-        args: $SOURCE_REPO $SOURCE_BRANCH $DESTINATION_REPO $DESTINATION_BRANCH
+      - uses: actions/checkout@v2
+      - name: repo-mirror
+      - uses: netengine/github-repository-sync-action@v1
+        with:
+          target_repo_url: https://mr-tps:${{ secrets.TPS_TOKEN }}@github.com/mr-tps/cross-pipeline-testing.git
