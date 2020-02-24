@@ -1,0 +1,25 @@
+name: repo-sync
+
+on:
+  pull_request:
+    branches: 
+      - master
+
+jobs:
+  repo-sync:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: repo-sync
+    - uses: wei/git-sync@v1
+      env:
+        SOURCE_REPO: "rohantarai/cross-pipeline-testing"
+        SOURCE_BRANCH: "master"
+        DESTINATION_REPO: "mr-tps/cross-pipeline-testing"
+        DESTINATION_BRANCH: "master"
+      with:
+        args: $SOURCE_REPO $SOURCE_BRANCH $DESTINATION_REPO $DESTINATION_BRANCH
